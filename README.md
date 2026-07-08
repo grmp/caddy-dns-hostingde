@@ -1,4 +1,4 @@
-# caddy-dns/hostingde
+# grmp/caddy-dns-hostingde
 
 This package contains a DNS provider module for [Caddy](https://github.com/caddyserver/caddy).
 It can be used to manage DNS records with [hosting.de](https://www.hosting.de).
@@ -55,5 +55,5 @@ tls {
 ## Building with xcaddy
 
 ```bash
-xcaddy build --with github.com/caddy-dns/hostingde
+xcaddy build --with github.com/grmp/caddy-dns-hostingde
 ```
