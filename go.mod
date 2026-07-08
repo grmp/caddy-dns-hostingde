@@ -1,4 +1,4 @@
-module github.com/caddy-dns/hostingde
+module github.com/grmp/caddy-dns-hostingde
 
 go 1.25.0
 
