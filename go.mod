@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/caddyserver/caddy/v2 v2.11.2
-	github.com/grmp/libdns-hostingde v0.0.0-20260708205139-1ced61de010f
+	github.com/grmp/libdns-hostingde
 )
 
 require (
