@@ -1,10 +1,10 @@
-module github.com/caddy-dns/httpnet
+module github.com/caddy-dns/hostingde
 
 go 1.25.0
 
 require (
 	github.com/caddyserver/caddy/v2 v2.11.2
-	github.com/libdns/httpnet v1.0.0
+	github.com/grmp/libdns-hostingde v0.0.0-20260708205139-1ced61de010f
 )
 
 require (

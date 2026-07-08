@@ -1,12 +1,12 @@
-# caddy-dns/httpnet
+# caddy-dns/hostingde
 
 This package contains a DNS provider module for [Caddy](https://github.com/caddyserver/caddy).
-It can be used to manage DNS records with [http.net](https://www.http.net).
+It can be used to manage DNS records with [hosting.de](https://www.hosting.de).
 
 ## Caddy module name
 
 ```
-dns.providers.httpnet
+dns.providers.hostingde
 ```
 
 ## Config examples
@@ -19,8 +19,8 @@ To use this module for the ACME DNS challenge, [configure the ACME issuer in you
   "challenges": {
     "dns": {
       "provider": {
-        "name": "httpnet",
-        "auth_token": "YOUR_HTTPNET_AUTH_TOKEN"
+        "name": "hostingde",
+        "auth_token": "YOUR_HOSTINGDE_AUTH_TOKEN"
       }
     }
   }
@@ -32,22 +32,22 @@ Or with the Caddyfile:
 ```
 # globally
 {
-    acme_dns httpnet <auth_token>
+    acme_dns hostingde <auth_token>
 }
 ```
 
 ```
 # one site, inline token
 tls {
-    dns httpnet <auth_token>
+    dns hostingde <auth_token>
 }
 ```
 
 ```
 # one site, block form with env-var placeholder
 tls {
-    dns httpnet {
-        auth_token {env.HTTPNET_AUTH_TOKEN}
+    dns hostingde {
+        auth_token {env.HOSTINGDE_AUTH_TOKEN}
     }
 }
 ```
@@ -55,5 +55,5 @@ tls {
 ## Building with xcaddy
 
 ```bash
-xcaddy build --with github.com/caddy-dns/httpnet
+xcaddy build --with github.com/caddy-dns/hostingde
 ```

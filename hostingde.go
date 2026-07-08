@@ -1,35 +1,35 @@
-// Package httpnet implements a Caddy DNS provider module for http.net.
+// Package hostingde implements a Caddy DNS provider module for hosting.de.
 //
-// This module wraps github.com/libdns/httpnet and registers it with Caddy's
+// This module wraps github.com/grmp/libdns-hostingde and registers it with Caddy's
 // module system so it can be used to solve ACME DNS-01 challenges.
 //
 // Caddyfile syntax:
 //
 //	# Inline arg (auth token)
 //	tls {
-//	    dns httpnet <auth_token>
+//	    dns hostingde <auth_token>
 //	}
 //
 //	# Block form
 //	tls {
-//	    dns httpnet {
+//	    dns hostingde {
 //	        auth_token <auth_token>
 //	    }
 //	}
 //
-// Credentials may use Caddy placeholder syntax, e.g. {env.HTTPNET_AUTH_TOKEN}.
-package httpnet
+// Credentials may use Caddy placeholder syntax, e.g. {env.HOSTINGDE_AUTH_TOKEN}.
+package hostingde
 
 import (
 	"fmt"
 
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/caddyconfig/caddyfile"
-	"github.com/libdns/httpnet"
+	hostingde "github.com/grmp/libdns-hostingde"
 )
 
-// Provider wraps the libdns http.net provider as a Caddy module.
-type Provider struct{ *httpnet.Provider }
+// Provider wraps the libdns hosting.de provider as a Caddy module.
+type Provider struct{ *hostingde.Provider }
 
 func init() {
 	caddy.RegisterModule(Provider{})
@@ -38,8 +38,8 @@ func init() {
 // CaddyModule returns the Caddy module information.
 func (Provider) CaddyModule() caddy.ModuleInfo {
 	return caddy.ModuleInfo{
-		ID:  "dns.providers.httpnet",
-		New: func() caddy.Module { return &Provider{new(httpnet.Provider)} },
+		ID:  "dns.providers.hostingde",
+		New: func() caddy.Module { return &Provider{new(hostingde.Provider)} },
 	}
 }
 
@@ -50,7 +50,7 @@ func (p *Provider) Provision(ctx caddy.Context) error {
 	repl := caddy.NewReplacer()
 	p.Provider.AuthToken = repl.ReplaceAll(p.Provider.AuthToken, "")
 	if p.Provider.AuthToken == "" {
-		return fmt.Errorf("httpnet: auth_token is required")
+		return fmt.Errorf("hostingde: auth_token is required")
 	}
 	return nil
 }
@@ -59,7 +59,7 @@ func (p *Provider) Provision(ctx caddy.Context) error {
 //
 // Syntax:
 //
-//	httpnet [<auth_token>] {
+//	hostingde [<auth_token>] {
 //	    auth_token <auth_token>
 //	}
 func (p *Provider) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
